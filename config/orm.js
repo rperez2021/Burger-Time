@@ -1,28 +1,27 @@
-import connection from "connection";
+var connection = require('../config/connection.js')
 var orm = {
-select_all: function selectAll(callback) {
-    connection.query("SELECT * FROM burgers_db", function(err, results) {
+select_all: function selectAll(table) {
+    connection.query("SELECT * FROM ?? ;", [table], function(err, results) {
         if (err) throw err;
-        callback(results)
+        console.log(results)
     })
 
 },
 
-insert: function insertOne(name, bool, callback) {
-    connection.query("INSERT INTO burgers (burger_name, devoured) VALUES ('" + name +
-    "'," + bool + ");", function(err, results) {
+insert: function insertOne(table, col, name, callback) {
+    connection.query("INSERT INTO ?? (??) VALUES (?);", [table, col, name], function(err, results) {
         if (err) throw err;
-        callback(results)
+        console.log(results)
     })
 },
 
-update: function updateOne(name, bool, callback) {
-    connection.query("UPDATE burgers SET devoured = " + bool + ", WHERE burger_name = '" +
-    name + "';", function(err, results) {
+update: function updateOne(table, bool, col, name, callback) {
+    connection.query("UPDATE ?? SET devoured = ? WHERE ?? = ?;", [table, bool, col, name], function(err, results) {
         if (err) throw err;
-        callback(results)
+        console.log(results)
     })
 }
 }
 
 module.exports = orm;
+

@@ -21,7 +21,7 @@
             </div>
             <div class="col s4">
                 <h1 class="center-align">Burger Time!</h1>
-                <img class="responsive-img" id="burger" src="../public/assets/img/burger.png">
+                <img class="responsive-img" id="burger" src="./img/burger.png">
             </div>
             <div class="col s4">
 
@@ -30,16 +30,26 @@
         <div class="divider"></div>
         <div class="row section">
             <div class="col s4">
-
+<h4>Choose Your Burger</h4>
+<ul class="people_list">
+    {{#each people}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
             </div>
-            <div class="col s4 center-align">
+            <div class="col s4 center-align"><h2>Devour it!</h2>
                 <a class="btn-floating btn-large pulse orange">
                     <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
             </div>
             <div class="col s4">
-
+<h4>Here are the Burgers You Have Devoured!</h4>
+<ul class="people_list">
+    {{#each people}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
             </div>
         </div>
         <div class="divider"></div>
