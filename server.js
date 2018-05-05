@@ -3,7 +3,7 @@ const fs = require('fs')
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 8080;
-const router = require("./controllers/burgers_controllers.js");
+const routes = require("./controllers/burgers_controllers.js");
 const exphbs = require("express-handlebars");
 
 // Express Static Folder
@@ -19,7 +19,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-app.use(routes);
+app.use('/', routes);
 
 app.listen(PORT, function() {
   console.log("Burger Time App now listening at localhost:" + PORT);

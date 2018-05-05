@@ -5,7 +5,7 @@
             </div>
             <div class="col s4">
                 <h1 class="center-align">Burger Time!</h1>
-                <img class="responsive-img" id="burger" src="../public/assets/img/burger.png">
+                <img class="responsive-img" id="burger" src="/assets/img/burger.png">
             </div>
             <div class="col s4">
 
@@ -15,6 +15,15 @@
         <div class="row section">
             <div class="col s4">
 <h4>Choose Your Burger</h4>
+   {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
             </div>
             <div class="col s4 center-align"><h2>Devour it!</h2>
                 <a class="btn-floating btn-large pulse orange">
@@ -24,7 +33,28 @@
             </div>
             <div class="col s4">
 <h4>Here are the Burgers You Have Devoured!</h4>
+     {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
             </div>
         </div>
         <div class="divider"></div>
     </div>
+    
+    
+
+<div class="row">
+    <h2>Add A Burger Option</h2>
+  <div class="col s12">
+    <form action="/burgers" method="POST">
+      <input type="text" id="name" name="burger_name" placeholder="Uber Delicious Burger">
+      <button type="submit" class="addBurgerButton">Add The Burger</button>
+    </form>
+  </div>
+</div>
