@@ -22,10 +22,10 @@ router.post('/burgers', function (req, res) {
     });
 });
 
-router.put('/burgers/:id', function (req, res) {
-    var condition = JSON.stringify(req.params.id);
+router.post('/burgers/:id', function (req, res) {
+    var condition = req.params.id;
     controller_burger.update(
-            'id', condition,
+            ['id'], [condition],
         function (data) {
             res.redirect('/');
         });
