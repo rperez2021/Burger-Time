@@ -9,6 +9,8 @@ var burger = sequelize.define('burger', {
   },
   burger_name: {
     type: Sequelize.STRING,
+    validate: {len: [2,20]},
+    isAlphanumeric: true,
   },
   devoured: {
     type: Sequelize.BOOLEAN,
