@@ -13,10 +13,4 @@ const User = sequelize.define('user', {
 
 sequelize.sync()
 
-sequelize.robert.destroy({
-  where: {},
-  truncate: true
-})
-
-
 module.exports = sequelize;
