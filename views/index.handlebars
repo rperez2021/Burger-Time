@@ -19,26 +19,24 @@
           {{#unless this.devoured}}
             <div>
               <form action="/burgers/{{this.id}}" method="POST">
-                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
+                <button type="submit" class='burgerAvailable waves-effect waves-light btn pulse blue'> {{this.burger_name}}</button>
               </form>
             </div>
           {{/unless}}
         {{/each}}
             </div>
-            <div class="col s4 center-align"><h2>Devour it!</h2>
-                <a class="btn-floating btn-large pulse orange">
-                    <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
+            <div class="col s4 center-align"><h4></h4>
             </div>
             <div class="col s4">
 <h4>Here are the Burgers You Have Devoured!</h4>
      {{#each burgers}}
           {{#if this.devoured}}
             <div class='burgerEaten'>
-              <div>
-                {{this.burger_name}}
-              </div>
+            <div>
+              <form action="/burgers/re_add/{{this.id}}" method="POST">
+                <button type="submit" class='burgerAvailable waves-effect waves-light btn red'> {{this.burger_name}}</button>
+              </form>
+            </div>
             </div>
           {{/if}}
         {{/each}}

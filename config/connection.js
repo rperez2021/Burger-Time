@@ -1,8 +1,15 @@
-const { Client } = require('pg');
-
-var connection = new Client({
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize({
     connectionString: process.env.DATABASE_URL,
-    ssl: true,
+  ssl: true,
 });
-connection.connect()
-module.exports = connection;
+
+const User = sequelize.define('user', {
+  username: Sequelize.STRING,
+  birthday: Sequelize.DATE
+});
+
+sequelize.sync()
+
+
+  module.exports = sequelize;

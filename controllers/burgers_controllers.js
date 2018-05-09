@@ -1,35 +1,52 @@
 var express = require('express');
 var router = express.Router()
-const controller_burger = require('../models/burger.js')
+const burger = require('../models/burger.js')
 
 
 router.get("/", (req, res) => {
-    controller_burger.select_all(function(data){
-            var handlebars_data = {
-                burgers: data
-            };
-            res.render("index", handlebars_data)
-        })
+    burger.findAll({
+    }).then(function(result) {
+        var handlebars_data = {burgers: result}
+        console.log(result[0])
+        console.log(result.dataValues)
+        res.render("index", handlebars_data)
+    }).catch(function(error) {
+        console.log(error)
+    })
 });
 
-router.post('/burgers', function (req, res) {
-    controller_burger.insert([
-        'burger_name'
-    ], [
-        req.body.burger_name
-    ], function (data) {
+router.post('/burgers', (req, res) => {
+    burger.create({
+        burger_name: req.body.burger_name
+    }).then(()=> {
         res.redirect('/');
-    });
+    }).catch(function(error) {
+        console.log(error)
+    })
 });
 
 router.post('/burgers/:id', function (req, res) {
-    var condition = req.params.id;
-    controller_burger.update(
-            ['id'], [condition],
-        function (data) {
-            res.redirect('/');
-        });
+    burger.update({
+        devoured: true,
+    },
+    {where: {id: req.params.id}})
+    .then(function(result) {
+        res.redirect('/')
+    }).catch(function(error) {
+        console.log(error)
+    })
 });
 
+router.post('/burgers/re_add/:id', function (req, res) {
+    burger.update({
+        devoured: false,
+    },
+    {where: {id: req.params.id}})
+    .then(function(result) {
+        res.redirect('/')
+    }).catch(function(error) {
+        console.log(error)
+    })
+});
 
 module.exports = router;

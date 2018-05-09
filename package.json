@@ -16,12 +16,14 @@
     "url": "https://github.com/rperez2021/Burger-Time/issues"
   },
   "homepage": "https://github.com/rperez2021/Burger-Time#readme",
-  "description": "",
+  "description": "Burger Time is a SPA I made to learn how to implement MySQL, Express and Handlebars together. It's pretty simple you can create different type's of burgers and then consume them!",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.15.0",
-    "pg": "^7.4.3"
-  }
+    "pg": "^7.4.3",
+    "sequelize": "^4.37.7"
+  },
+  "devDependencies": {}
 }
