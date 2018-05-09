@@ -13,7 +13,7 @@ const User = sequelize.define('user', {
 
 sequelize.sync()
 
-sequelize.User.destroy({
+sequelize.robert.destroy({
   where: {},
   truncate: true
 })
