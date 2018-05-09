@@ -19,7 +19,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-app.use('/', routes)(app);
+app.use('/', routes);
 
 app.listen(PORT, function() {
   console.log("Burger Time App now listening at localhost:" + PORT);
