@@ -51,7 +51,7 @@
     <h2>Add A Burger Option</h2>
   <div class="col s12">
     <form action="/burgers" method="POST">
-      <input type="text" id="name" name="burger_name" placeholder="Name Your Burger!" pattern="[a-zA-Z0-9_-]){2,20}" title="Please only use Alphanumeric Characters" >
+      <input type="text" id="name" name="burger_name" placeholder="Name Your Burger!" pattern="^[a-zA-Z0-9]{4,10}$" title="Please only use Alphanumeric Characters">
       <button type="submit" class="addBurgerButton">Add It!</button>
     </form>
   </div>
